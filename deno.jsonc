@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "@config": "./config.json.ts",
+    "@core/": "./src/core/",
+    "@structures/": "./src/structures/"
+  },
+  "tasks": {
+    "run": "deno run --config deno.jsonc --importmap deno.jsonc --unstable --allow-all --watch main.ts",
+    "dev": "deno run --config deno.jsonc --importmap deno.jsonc --unstable --inspect-brk --allow-all main.ts"
+  }
+}
