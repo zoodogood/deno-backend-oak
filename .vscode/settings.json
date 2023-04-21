@@ -1,6 +1,6 @@
 {
   "deno.enable": true,
   "deno.unstable": true,
-  "deno.config": "./deno.jsonc",
-  "deno.importMap": "./deno.jsonc"
+  "deno.config": "./deno.json",
+  "deno.importMap": "./deno.json"
 }
