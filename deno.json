@@ -1,0 +1,16 @@
+{
+  "imports": {
+    "@config": "./config.json.ts",
+    "@core/": "./src/core/",
+    "@structures/": "./src/structures/",
+    "@lib/": "./src/lib/",
+    "@root/": "./"
+  },
+  "tasks": {
+    "run": "deno run --config deno.json --importmap deno.json --unstable --allow-all --watch main.ts",
+    "dev": "deno run --config deno.json --importmap deno.json --unstable --inspect-brk --allow-all main.ts"
+  },
+  "compilerOptions": {
+    "resolveJSONModules": true
+  }
+}
