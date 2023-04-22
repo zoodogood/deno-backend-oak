@@ -1,11 +1,13 @@
 export const config = {
   database: {
-    uri: "mongodb://localhost:27017/DenoOak"
+    uri: "mongodb://localhost:27017/DenoOak",
+    debug: true
   },
   server: {
     startOptions: {
       port: 80
-    }
+    },
+    debug: false
   }
 };
 
