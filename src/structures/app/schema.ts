@@ -1,8 +1,8 @@
 import { model, Schema } from "@core/database/deps.ts";
 
 interface ISchema {
-  name: string,
-  usesCounterValue: number
+  name: string;
+  usesCounterValue: number;
 }
 
 const schema = new Schema<ISchema>({
