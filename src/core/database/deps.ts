@@ -1,3 +1,4 @@
-export * from "https://dev.jspm.io/mongoose";
-import mongoose from "https://dev.jspm.io/mongoose";
+export * from "npm:mongoose@^7.0.4";
+import mongoose from "npm:mongoose@^7.0.4";
+
 export default mongoose;
