@@ -1,7 +1,7 @@
 import { Application, Middleware } from "./deps.ts";
 
 import { default as IConfig } from "@config";
-import { router, timing } from './middleware/mod.ts';
+import { router, timing } from "./middleware/mod.ts";
 
 const app = new Application();
 
@@ -13,11 +13,19 @@ const setMiddleware = (app: Application, middleware: Middleware[]) => {
 
 export async function startApp(config: typeof IConfig): Promise<void> {
   const { server: serverConfig } = config;
-  const { startOptions } = serverConfig;
+  const { startOptions, debug: needDebug } = serverConfig;
 
   setMiddleware(app, [timing, router]);
 
-  await app.listen(startOptions);
+  app
+    .listen(startOptions)
+    .then(() => needDebug && console.log("[SERVER]", "is launched"))
+    .catch((error) => needDebug && console.error("[SERVER]", error));
+
+  await new Promise((resolve) =>
+    app.addEventListener("listen", resolve, { once: true })
+  );
+
   return;
 }
 
