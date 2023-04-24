@@ -1,15 +1,13 @@
-import { model, Schema } from "@core/database/deps.ts";
+import { Document } from "@core/database/deps.ts";
+import { database } from "@core/exports.ts";
 
-interface ISchema {
+interface ISchema extends Document {
   name: string;
-  usesCounterValue: number;
+  usesCounterValue?: number;
 }
 
-const schema = new Schema<ISchema>({
-  name: { type: String, unique: true },
-  usesCounterValue: { type: Number, default: 0 },
-});
+const model = await database.getCollection<ISchema>("App");
 
-export { schema, model };
+export { model };
 export type { ISchema };
-export default model("App", schema);
+export default model;

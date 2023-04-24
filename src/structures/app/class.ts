@@ -1,24 +1,22 @@
-
-import { Document } from '@core/database/deps.ts';
-import Model from './schema.ts';
-import type { ISchema } from './schema.ts';
-
+import Model from "./schema.ts";
+import type { ISchema } from "./schema.ts";
 
 class App {
-	
-	document?: Document & ISchema;
+  document?: ISchema;
 
-	async fetch(){
-		const name = "App";
-		const document = (await Model.findOne({name})) ?? new Model({name});
-		if (!document){
-			// to-do: Не допустить возникновения ошибки на этом этапе
-			throw new Error();
-		}
-		document.save();
-		
-		this.document = document;
-	}
+  fetch() {
+    const name = "App";
+    const document = Model.findOne({ name }) ?? Model.insertOne({ name });
+
+    this.document = document;
+
+    this.updateProtocol();
+  }
+
+  private updateProtocol() {
+    const TIMEOUT = 60_000;
+    setInterval(() => Model.save(), TIMEOUT);
+  }
 }
 
 export { App };
