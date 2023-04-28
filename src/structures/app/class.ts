@@ -1,21 +1,20 @@
 import Model from "./schema.ts";
 import type { ISchema } from "./schema.ts";
+import { Document } from "@lib/DatabaseModel.ts";
 
 class App {
-  document?: ISchema;
+  document?: Document<ISchema> & Partial<ISchema>;
 
-  fetch() {
+  async fetch() {
     const name = "App";
-    const document = Model.findOne({ name }) ?? Model.insertOne({ name });
+    const document =
+      (await Model.fetchOne({ name })) ?? (await Model.insertOne({ name }));
+
+    if (document === null) {
+      throw new Error("App is null");
+    }
 
     this.document = document;
-
-    this.updateProtocol();
-  }
-
-  private updateProtocol() {
-    const TIMEOUT = 60_000;
-    setInterval(() => Model.save(), TIMEOUT);
   }
 }
 

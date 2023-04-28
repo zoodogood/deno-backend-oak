@@ -1,1 +1,1 @@
-export * from "https://deno.land/x/filedb@0.0.6/mod.ts";
+export * from "https://esm.sh/@supabase/supabase-js@2.21.0";

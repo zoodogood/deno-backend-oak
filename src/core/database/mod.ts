@@ -1,5 +1,6 @@
-import { FileDB } from "./deps.ts";
+import { createClient } from "./deps.ts";
 import { default as config } from "@config";
 
-const database = new FileDB(config.database.startOptions);
+const database = createClient(config.database.uri, config.database.apiKey!);
+
 export { database };

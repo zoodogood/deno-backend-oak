@@ -1,9 +1,9 @@
-import { App } from '@structures/app/mod.ts';
+import { App } from "@structures/app/mod.ts";
 
 const app = new App();
 
-export async function startApp(){
-	await app.fetch();
+export async function startApp() {
+  await app.fetch();
 }
 
 export default app;
