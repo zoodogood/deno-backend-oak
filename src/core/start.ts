@@ -10,4 +10,4 @@ events.handleAll();
 await startOak(config);
 
 // --------------
-startApp();
+await startApp();
