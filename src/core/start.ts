@@ -7,7 +7,7 @@ import { startApp } from "@core/app/mod.ts";
 events.handleAll();
 
 // --------------
-await startOak(config);
+await startApp();
 
 // --------------
-await startApp();
+await startOak(config);
