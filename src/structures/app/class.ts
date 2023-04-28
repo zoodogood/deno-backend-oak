@@ -8,7 +8,9 @@ class App {
   async fetch() {
     const name = "App";
     const document =
-      (await Model.fetchOne({ name })) ?? (await Model.insertOne({ name }));
+      (await Model.fetchOne({ name })) ??
+      (await Model.insertOne({ name })) ??
+      null;
 
     if (document === null) {
       throw new Error("App is null");
